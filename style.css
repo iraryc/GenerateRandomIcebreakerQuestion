@@ -40,6 +40,8 @@ nav a {
     padding: 15px 30px; /* Adjust padding for larger size */
     font-size: 20px; /* Adjust font size for larger text */
     border-radius: 10px; /* Optional: Add rounded corners for visual appeal */
+    font-family: "Permanent Marker", cursive;
+    font-weight: 600;
 
 }
 
