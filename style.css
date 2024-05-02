@@ -1,5 +1,5 @@
 body {
-    background-color: #f8f9fa; /* Light gray background for a subtle look */
+    background-color: lightblue; /* Light gray background for a subtle look */
     height: 100vh; /* Full viewport height */
     display: flex;
     flex-direction: column;
