@@ -30,4 +30,4 @@ function generateNewName() {
 }
 
 // Example usage:
-let thequestion = generateIcebreaker();
+let thequestion = generateNewName();
