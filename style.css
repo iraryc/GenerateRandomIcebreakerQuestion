@@ -47,3 +47,9 @@ nav a {
     background-color: blueviolet;
     color: plum;
 }
+
+.names {
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
