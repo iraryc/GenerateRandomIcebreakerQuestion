@@ -33,3 +33,17 @@ nav a {
     font-size: 18px;
     padding: 10px 15px;
 }
+
+.btn {
+    background-color: plum;
+    color: blueviolet;
+    padding: 15px 30px; /* Adjust padding for larger size */
+    font-size: 20px; /* Adjust font size for larger text */
+    border-radius: 10px; /* Optional: Add rounded corners for visual appeal */
+
+}
+
+.btn:hover {
+    background-color: blueviolet;
+    color: plum;
+}
