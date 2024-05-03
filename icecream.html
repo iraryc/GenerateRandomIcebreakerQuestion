@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ice Cream Cost Calculator</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/ice.css">
+    <style>
+        /* Custom CSS for additional styling */
+        .topping-group {
+            border: 1px solid #183b5e;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Ice Cream Cost Calculator</h1>
+        
+        <form id="iceCreamForm">
+            <div class="form-group">
+                <label for="numberOfScoops">Number of Scoops:</label>
+                <input type="number" class="form-control" id="numberOfScoops" min="1" value="1">
+            </div>
+            
+            <div class="form-group topping-group">
+                <label>Toppings:</label><br>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="sprinklesCheckbox">
+                    <label class="form-check-label" for="sprinklesCheckbox">Sprinkles ($0.50)</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="hotFudgeCheckbox">
+                    <label class="form-check-label" for="hotFudgeCheckbox">Hot Fudge ($1.25)</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="whippedCreamCheckbox">
+                    <label class="form-check-label" for="whippedCreamCheckbox">Whipped Cream ($0.25)</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="cherryCheckbox">
+                    <label class="form-check-label" for="cherryCheckbox">Cherry ($0.25)</label>
+                </div>
+            </div>
+            
+            <button type="button" class="btn btn-primary btn-block" onclick="calculateCost()">Submit Order</button>
+        </form>
+
+        <div id="result" class="mt-4"></div>
+    </div>
+
+    <!-- Bootstrap JS (optional, if you need JS functionality) -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        //This caclculate cost is the button above ^^ where it says on click
+        function calculateCost() {
+
+            // Created the variables for each output when you click submit order
+            var basePricePerScoop = 2.25;
+            var additionalPricePerScoop = 1.25;
+            var taxRate = 0.08; // 8% tax rate
+            
+            // Get the number of scoops
+            var numberOfScoops = parseInt(document.getElementById('numberOfScoops').value);
+            
+            // Get the selected toppings
+            var sprinklesCheckbox = document.getElementById('sprinklesCheckbox');
+            var hotFudgeCheckbox = document.getElementById('hotFudgeCheckbox');
+            var whippedCreamCheckbox = document.getElementById('whippedCreamCheckbox');
+            var cherryCheckbox = document.getElementById('cherryCheckbox');
+            
+            // Calculate cost based on selected toppings and number of scoops
+            var totalScoopPrice = basePricePerScoop + (numberOfScoops - 1) * additionalPricePerScoop;
+            var totalToppingPrice = 0;
+            
+            if (sprinklesCheckbox.checked) {
+                totalToppingPrice += 0.50;
+            }
+            if (hotFudgeCheckbox.checked) {
+                totalToppingPrice += 1.25;
+            }
+            if (whippedCreamCheckbox.checked) {
+                totalToppingPrice += 0.25;
+            }
+            if (cherryCheckbox.checked) {
+                totalToppingPrice += 0.25;
+            }
+
+            var subTotal = totalScoopPrice + totalToppingPrice;
+            var tax = subTotal * taxRate;
+            var totalDue = subTotal + tax;
+
+            // Display the result
+            var resultHtml = "<strong>Base Price:</strong> $" + totalScoopPrice.toFixed(2) + "<br>";
+            resultHtml += "<strong>Tax:</strong> $" + tax.toFixed(2) + "<br>";
+            resultHtml += "<strong>Total Due:</strong> $" + totalDue.toFixed(2);
+
+            document.getElementById('result').innerHTML = resultHtml;
+        }
+    </script>
+</body>
+</html>
